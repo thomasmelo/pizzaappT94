@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('produtos_tamanhos', function (Blueprint $table) {
             $table->increments('id_produto_tamanho');
             $table->integer('id_produto');
-            $table->integer('id_tamanho');
-            $table->decimal('preco',10,2);
-            $table->text('observacoes');
+            $table->integer('id_tamanho')->default(1);
+            $table->decimal('preco',10,2)->default(0);
+            $table->text('observacoes')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

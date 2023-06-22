@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Status extends Model
 {
     use SoftDeletes;
-    use SoftDeletes;
     protected $table = 'status';
     protected $primaryKey = 'id_status';
     protected $dates = [
