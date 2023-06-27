@@ -115,23 +115,23 @@ Route::prefix('enderecos')
  * |--------------------------------------------------------------------------
  */
 Route::prefix('pedidos')
-->controller(PedidoController::class)
-->group(function () {
-    Route::get('/', 'index')
-        ->name('pedido.index');
-    Route::get('/novo', 'create')
-        ->name('pedido.create');
-    Route::get('/{id}', 'show')
-        ->name('pedido.show');
-    Route::get('/editar/{id}', 'edit')
-        ->name('pedido.edit');
-    Route::post('/store', 'store')
-        ->name('pedido.store');
-    Route::post('/update', 'update')
-        ->name('pedido.update');
-    Route::post('/destroy', 'destroy')
-        ->name('pedido.destroy');
-});
+    ->controller(PedidoController::class)
+    ->group(function () {
+        Route::get('/', 'index')
+            ->name('pedido.index');
+        Route::get('/novo', 'create')
+            ->name('pedido.create');
+        Route::get('/{id}', 'show')
+            ->name('pedido.show');
+        Route::get('/editar/{id}', 'edit')
+            ->name('pedido.edit');
+        Route::post('/store', 'store')
+            ->name('pedido.store');
+        Route::post('/update', 'update')
+            ->name('pedido.update');
+        Route::post('/destroy', 'destroy')
+            ->name('pedido.destroy');
+    });
 
 /*
  * |--------------------------------------------------------------------------
