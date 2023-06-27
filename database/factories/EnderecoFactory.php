@@ -23,8 +23,8 @@ class EnderecoFactory extends Factory
             'bairro' => fake()->words(),
             'cidade' => fake()->city(),
             'uf' => 'SP',
-            'cep' => fake()->postcode(),
-            'observacoes' => fake()->paragraph()
+            'cep' => fake()->numberBetween(1,1000),
+            'observacoes' => fake()->paragraph(),
         ];
     }
 }
