@@ -32,9 +32,12 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/profile', [ProfileController::class, 'edit'])
+    ->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])
+    ->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])
+    ->name('profile.destroy');
 });
 
 /*
@@ -57,7 +60,7 @@ Route::prefix('cargos')
             ->name('cargo.store');
         Route::post('/update', 'update')
             ->name('cargo.update');
-        Route::post('/destroy', 'destroy')
+        Route::post('/destroy/{id}', 'destroy')
             ->name('cargo.destroy');
     });
 
