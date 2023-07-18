@@ -34,7 +34,11 @@
                     {{ $produto->nome }}
                 </td>
                 <td>{{ nl2br($produto->observacoes) }}</td>
-                <td></td>
+                <td>
+                    {!!
+                        $produto->tamanhos()->count()
+                    !!}
+                </td>
             </tr>
             @endforeach
         </tbody>
