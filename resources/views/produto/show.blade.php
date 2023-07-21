@@ -1,5 +1,8 @@
 @extends('layouts.base')
 @section('content')
+{{-- menu --}}
+@include('produto.partials.menu')
+{{-- /menu --}}
 
 <h1> Produto:{{ $produto->nome }} </h1>
 <h2> Tipo: {{ $produto->tipo->tipo }} </h2>
@@ -29,7 +32,7 @@
                 </a>
             </td>
             <td>
-                {{ $item->tamanhos->tamanho->tamanho}}
+                {!! $item->tamanho->tamanho !!}
             </td>
             <td>
                 {{ $item->preco }}
