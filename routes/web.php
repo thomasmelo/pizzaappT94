@@ -162,7 +162,7 @@ Route::prefix('produtos')
             ->name('produto.store');
         Route::post('/update', 'update')
             ->name('produto.update');
-        Route::post('/destroy', 'destroy')
+        Route::post('/destroy/{id}', 'destroy')
             ->name('produto.destroy');
 
         Route::post('/tamanho/store/{id_produto}', 'storeTamanho')

@@ -17,7 +17,7 @@ class ProdutoController extends Controller
 {
     public function index()
     {
-        $produtos = Produto::orderBy('nome');
+        $produtos = Produto::orderBy('nome')->paginate(10);
 
         return view('produto.index')
             ->with(compact('produtos'));
