@@ -39,6 +39,18 @@ class ProdutoController extends Controller
     public function store(Request $request)
     {
         $produto = Produto::create($request->all());
+        //subir a foto
+        if($request->foto){
+            //pegar a extensão do arquivo
+            $extension =  $request->foto->getClientOriginalExtension();
+            //criar um nome unico para o arquivo
+            $nomeFoto = date('YmdHis').rand(0,1000).'.'.$extension;
+            //subir o arquivo para a pasta fotos
+            $request->foto->storeAs('/public/fotos',$nomeFoto);
+            //atribuir o nome do arquivo a propriedade foto
+            $produto->foto = $nomeFoto;
+            $produto->save();
+        }
         return redirect()
             ->route(
                 'produto.show',
@@ -71,6 +83,18 @@ class ProdutoController extends Controller
     {
         $produto = Produto::find($id);
         $produto->update($request->all());
+        //subir a foto
+        if($request->foto){
+            //pegar a extensão do arquivo
+            $extension =  $request->foto->getClientOriginalExtension();
+            //criar um nome unico para o arquivo
+            $nomeFoto = date('YmdHis').rand(0,1000).'.'.$extension;
+            //subir o arquivo para a pasta fotos
+            $request->foto->storeAs('/public/fotos',$nomeFoto);
+            //atribuir o nome do arquivo a propriedade foto
+            $produto->foto = $nomeFoto;
+            $produto->save();
+        }
         return redirect()
             ->route(
                 'produto.show',

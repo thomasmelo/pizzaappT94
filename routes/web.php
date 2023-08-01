@@ -160,7 +160,7 @@ Route::prefix('produtos')
 
         Route::post('/store', 'store')
             ->name('produto.store');
-        Route::post('/update', 'update')
+        Route::post('/update/{id}', 'update')
             ->name('produto.update');
         Route::post('/destroy/{id}', 'destroy')
             ->name('produto.destroy');

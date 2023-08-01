@@ -1,4 +1,5 @@
 @extends('layouts.base')
+
 @section('content')
 {{-- Menu --}}
     @include('layouts.partials.menu')
@@ -13,7 +14,7 @@
         @endif
     </h1>
     <form method="post"
-        action="{{ $produto ? route('produto.update', ['id' => $produto->id_produto()]) : route('produto.store') }}"
+        action="{{ $produto ? route('produto.update', ['id' => $produto->id_produto]) : route('produto.store') }}"
         id="produto-form" enctype="multipart/form-data" class="mt-6">
         @csrf
 
@@ -32,7 +33,8 @@
                             <select class="form-select" name="id_tipo_produto" id="id_tipo_produto" required>
                                 <option value="">Selecione</option>
                                 @foreach ($tiposProduto::orderBy('tipo_produto')->get() as $item)
-                                    <option value="{{ $item->id_tipo_produto }}" @selected(old('id_tipo_produto') || ($produto && $produto->id_tipo_produto == $item->id_tipo_produto))>
+                                    <option value="{{ $item->id_tipo_produto }}"
+                                        @selected(old('id_tipo_produto') || ($produto && $produto->id_tipo_produto == $item->id_tipo_produto))>
                                         {{ $item->tipo_produto }}
                                     </option>
                                 @endforeach

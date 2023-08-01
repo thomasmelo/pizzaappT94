@@ -1,20 +1,26 @@
 @extends('layouts.base')
 @section('content')
     {{-- menu --}}
-    @include('produto.partials.menu')
-    {{-- /menu --}}
+    @include('produto.partials.menu')    {{-- /menu --}}
 
-    <h1> Produto:{{ $produto->nome }} </h1>
-    <h2> Tipo: {{ $produto->tipo->tipo }} </h2>
-    <p> Descrição: {!! nl2br($produto->descricao) !!}</p>
-    @if ($produto->observacoes)
-        <p class="alert alert-info">
-            {!! nl2br($produto->observacoes) !!}
-        </p>
-    @endif
+
+        <h1> Produto:{{ $produto->nome }} </h1>
+        <h2> Tipo: {{ $produto->tipo->tipo }} </h2>
+        @if ($produto->foto)
+            <p>
+                <img src="{{ url('storage/' . $produto->foto) }}" lass="img-thumbnail" width="450">
+            </p>
+
+        @endif
+        <p> Descrição: {!! nl2br($produto->descricao) !!}</p>
+        @if ($produto->observacoes)
+            <p class="alert alert-info">
+                {!! nl2br($produto->observacoes) !!}
+            </p>
+        @endif
+
     <h6>
-        <a class="btn btn-success"
-            href="{{ route('produto.createTamanho', ['id_produto' => $produto->id_produto]) }}">
+        <a class="btn btn-success" href="{{ route('produto.createTamanho', ['id_produto' => $produto->id_produto]) }}">
             Adicionar Novo Tamanho
         </a>
     </h6>

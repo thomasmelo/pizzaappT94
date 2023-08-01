@@ -46,9 +46,14 @@
                     </td>
                     <td>
                         {{ $produto->id_produto }}
+
                     </td>
                     <td>
                         {{ $produto->nome }}
+                        @if ($produto->foto)
+                        <br>
+                        <img src="{{ url('storage/' . $produto->foto) }}" lass="img-thumbnail" width="250">
+                        @endif
                     </td>
                     <td>{{ nl2br($produto->observacoes) }}</td>
                     <td>
